@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model SupportTicket {
+  id                     String                 @id @default(cuid())
+  protocol               String                 @unique
+  subject                String
+  category               String
+  priority               String                 @default("MEDIUM")
+  status                 String                 @default("OPEN")
+  customerName           String
+  customerEmail          String
+  customerPhone          String?
+  customerCompany        String?
+  description            String
+  assignedTechnicianName String?
+  lastReplyAt            DateTime?
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+  messages               SupportTicketMessage[]
+
+  @@index([customerEmail])
+  @@index([status, priority, createdAt])
+}
+
+model SupportTicketMessage {
+  id         String        @id @default(cuid())
+  ticketId   String
+  authorRole String
+  authorName String
+  body       String
+  createdAt  DateTime      @default(now())
+  ticket     SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+
+  @@index([ticketId, createdAt])
+}

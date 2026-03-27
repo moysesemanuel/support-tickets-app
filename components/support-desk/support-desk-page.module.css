@@ -1,0 +1,836 @@
+.page {
+  --ink: #1a2430;
+  --muted: #66717e;
+  --line: rgba(26, 36, 48, 0.1);
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: #ffffff;
+  --brand: #0f5c78;
+  --brand-strong: #0a3241;
+  --accent: #d97a33;
+  --success: #1d7f52;
+  --warning: #a16411;
+  --danger: #b84141;
+  background:
+    radial-gradient(circle at top left, rgba(15, 92, 120, 0.14), transparent 28%),
+    radial-gradient(circle at right, rgba(217, 122, 51, 0.12), transparent 24%),
+    linear-gradient(180deg, #edf3f6 0%, #dfe8ed 100%);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.shell {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  max-width: none;
+  min-height: 100vh;
+  position: relative;
+}
+
+.workspaceShell {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 280px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #12202a 0%, #182f3d 100%);
+  border: 0;
+  border-radius: 0;
+  color: #eef5f8;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  min-height: 100vh;
+  padding: 24px;
+  position: sticky;
+  top: 0;
+}
+
+.sidebarBrand,
+.sidebarActions,
+.sidebarMenu,
+.sidebarSearchWrap {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebarEyebrow {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sidebarBrand strong,
+.sidebarBrand strong {
+  font-size: 1.3rem;
+}
+
+.sidebarBrand p,
+.sidebarBrand p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.sidebarMenu {
+  margin-top: 16px;
+}
+
+.sidebarSearchWrap {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 18px minmax(0, 1fr);
+  padding: 0 12px;
+}
+
+.sidebarSearchIcon {
+  color: #6d7a87;
+  font-size: 0.92rem;
+}
+
+.sidebarSearchInput {
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  font: inherit;
+  min-height: 42px;
+  outline: none;
+  width: 100%;
+}
+
+.sidebarSearchInput::placeholder {
+  color: #8793a0;
+}
+
+.sidebarMenuButton,
+.sidebarMenuButtonActive {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: rgba(238, 245, 248, 0.78);
+  cursor: pointer;
+  font: inherit;
+  min-height: 42px;
+  padding: 0 12px;
+  text-align: left;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.sidebarMenuButton:hover,
+.sidebarMenuButtonActive:hover {
+  transform: translateX(2px);
+}
+
+.sidebarMenuButtonActive {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.mainStage {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+}
+
+.toastViewport {
+  display: grid;
+  gap: 10px;
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  width: min(360px, calc(100vw - 32px));
+  z-index: 80;
+}
+
+.toastSuccess,
+.toastError {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 18px;
+  box-shadow: 0 18px 36px rgba(10, 50, 65, 0.16);
+  color: #f7fbfd;
+  padding: 14px 16px;
+}
+
+.toastSuccess {
+  background: rgba(29, 127, 82, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.toastError {
+  background: rgba(184, 65, 65, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.eyebrow {
+  color: var(--brand);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.loginShell {
+  align-items: stretch;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 440px);
+}
+
+.loginPromo,
+.loginCard,
+.metricCard,
+.panel,
+.thread,
+.summaryCard,
+.panelMuted,
+.actionPanel,
+.insightCard {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+}
+
+.loginPromo,
+.loginCard,
+.panel,
+.thread,
+.actionPanel {
+  padding: 28px;
+}
+
+.loginPromo {
+  background:
+    linear-gradient(135deg, rgba(10, 50, 65, 0.9) 0%, rgba(15, 92, 120, 0.88) 58%, rgba(217, 122, 51, 0.76) 100%);
+  color: #f8fbfd;
+  display: grid;
+  gap: 18px;
+  min-height: 520px;
+}
+
+.loginPromo .eyebrow {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.loginPromo h1,
+.loginCard h2,
+.topbar h1,
+.sectionHeader h2,
+.sectionHeader h3,
+.threadHeader h3,
+.emptyStage h3 {
+  margin: 0;
+}
+
+.loginPromo h1 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+  max-width: 10ch;
+}
+
+.loginPromo p,
+.loginCard p,
+.sectionHeader p,
+.threadHeader p,
+.ticketMeta,
+.messageBubble p,
+.summaryCard p,
+.panelMuted p,
+.emptyState,
+.emptyStage p,
+.insightCard p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.loginPromo p {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 56ch;
+}
+
+.promoGrid,
+.summaryGrid,
+.metricsStrip,
+.insightStack,
+.demoAccounts {
+  display: grid;
+  gap: 14px;
+}
+
+.promoGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: auto;
+}
+
+.promoCard {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+}
+
+.promoCard strong {
+  font-size: 1.05rem;
+}
+
+.promoCard p {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.loginCard {
+  align-content: start;
+  display: grid;
+  gap: 18px;
+}
+
+.demoAccounts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.demoAccountCard {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(15, 92, 120, 0.22);
+  border-radius: 22px;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  padding: 18px;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.demoAccountCard strong {
+  color: var(--brand-strong);
+}
+
+.demoAccountCard:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 92, 120, 0.36);
+  transform: translateY(-2px);
+}
+
+.formGrid,
+.sectionHeader,
+.ticketCards,
+.messages,
+.rightStage,
+.mainStage,
+.headerCopy,
+.headerUtilityBar,
+.profileMenu,
+.profileMenuHeader,
+.profileMenuWrap {
+  display: grid;
+  gap: 14px;
+}
+
+.formRow,
+.dashboardGrid,
+.actionRow,
+.ticketHeader,
+.topbarActions,
+.headerBar {
+  display: grid;
+  gap: 14px;
+}
+
+.headerBar {
+  align-items: start;
+  grid-template-columns: 1fr;
+}
+
+.headerCopy h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.05em;
+  line-height: 0.96;
+  margin: 0;
+}
+
+.headerUtilityBar {
+  align-items: center;
+  grid-template-columns: auto auto;
+  justify-content: end;
+}
+
+.profileMenuWrap {
+  position: relative;
+}
+
+.profileButton {
+  align-items: start;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  cursor: pointer;
+  display: grid;
+  font: inherit;
+  gap: 4px;
+  min-height: 50px;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.profileGreeting {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.profileRole {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.profileMenu {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 18px 36px rgba(10, 50, 65, 0.14);
+  min-width: 260px;
+  padding: 14px;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  z-index: 40;
+}
+
+.profileMenuHeader strong {
+  color: var(--ink);
+}
+
+.profileMenuHeader span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.profileMenuAction,
+.profileMenuLogout {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  min-height: 42px;
+  padding: 0 12px;
+  text-align: left;
+}
+
+.profileMenuLogout {
+  color: var(--danger);
+}
+
+.languageField {
+  display: grid;
+  gap: 8px;
+}
+
+.languageField span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.languageSelect {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--ink);
+  font: inherit;
+  min-height: 42px;
+  padding: 0 12px;
+}
+
+.formRow {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.input,
+.select,
+.textarea {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--ink);
+  font: inherit;
+  min-height: 52px;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.textarea {
+  min-height: 130px;
+  padding-block: 14px;
+  resize: vertical;
+}
+
+.primaryButton,
+.secondaryButton,
+.ghostButton,
+.statusButton {
+  align-items: center;
+  border-radius: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+  border: 0;
+  box-shadow: 0 18px 34px rgba(10, 50, 65, 0.2);
+  color: #f7fbfd;
+}
+
+.secondaryButton,
+.ghostButton,
+.statusButton {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.topbarActions {
+  grid-auto-flow: column;
+}
+
+.metricsStrip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.metricCard {
+  background: linear-gradient(180deg, rgba(8, 40, 52, 0.96) 0%, rgba(15, 92, 120, 0.92) 100%);
+  border-color: rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+}
+
+.metricCard strong,
+.summaryCard strong,
+.insightCard strong {
+  color: var(--brand-strong);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.metricCard strong,
+.metricCard p,
+.metricCard .eyebrow {
+  color: #f2f8fb;
+}
+
+.metricCard p {
+  opacity: 0.82;
+}
+
+.contactEmail {
+  font-size: 1.2rem !important;
+  line-height: 1.2 !important;
+  overflow-wrap: anywhere;
+}
+
+.dashboardGrid {
+  align-items: start;
+  grid-template-columns: 380px minmax(0, 1fr);
+}
+
+.queueRail,
+.contentStage,
+.rightStage {
+  min-width: 0;
+}
+
+.contentStage {
+  display: grid;
+  gap: 20px;
+}
+
+.panel,
+.thread,
+.opsPanel {
+  display: grid;
+  gap: 18px;
+}
+
+.thread {
+  background: rgba(248, 251, 253, 0.9);
+  min-height: 760px;
+}
+
+.opsPanel {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.opsCard,
+.insightCard {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+}
+
+.opsCard strong,
+.insightCard strong {
+  color: var(--brand-strong);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.ticketCard,
+.ticketCardActive {
+  background: rgba(247, 250, 252, 0.88);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  cursor: pointer;
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  text-align: left;
+}
+
+.ticketCardActive {
+  background: #ffffff;
+  border-color: rgba(15, 92, 120, 0.34);
+  box-shadow: 0 14px 30px rgba(10, 50, 65, 0.1);
+}
+
+.ticketHeader {
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.ticketCardTopline,
+.ticketFooterMeta {
+  color: var(--muted);
+  display: flex;
+  font-size: 0.82rem;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.ticketHeader strong {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.ticketMeta {
+  display: grid;
+  gap: 4px;
+}
+
+.badges,
+.statusRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge,
+.badgeOpen,
+.badgeProgress,
+.badgeWaiting,
+.badgeResolved,
+.badgeLow,
+.badgeMedium,
+.badgeHigh,
+.badgeUrgent {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  min-height: 30px;
+  padding: 0 12px;
+}
+
+.badgeOpen {
+  background: rgba(29, 127, 82, 0.12);
+  color: var(--success);
+}
+
+.badgeProgress {
+  background: rgba(15, 92, 120, 0.12);
+  color: var(--brand);
+}
+
+.badgeWaiting {
+  background: rgba(161, 100, 17, 0.14);
+  color: var(--warning);
+}
+
+.badgeResolved,
+.badgeLow {
+  background: rgba(92, 106, 119, 0.14);
+  color: #42505d;
+}
+
+.badgeMedium {
+  background: rgba(15, 92, 120, 0.12);
+  color: var(--brand);
+}
+
+.badgeHigh {
+  background: rgba(217, 122, 51, 0.14);
+  color: var(--accent);
+}
+
+.badgeUrgent {
+  background: rgba(184, 65, 65, 0.12);
+  color: var(--danger);
+}
+
+.threadHeader {
+  display: grid;
+  gap: 10px;
+}
+
+.summaryGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.summaryCard,
+.panelMuted {
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+}
+
+.messages {
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.messageBubble,
+.messageBubbleTech {
+  border-radius: 24px;
+  display: grid;
+  gap: 8px;
+  max-width: 88%;
+  padding: 16px;
+}
+
+.messageBubble {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line);
+}
+
+.messageBubbleTech {
+  background: linear-gradient(135deg, rgba(15, 92, 120, 0.12) 0%, rgba(10, 50, 65, 0.16) 100%);
+  border: 1px solid rgba(15, 92, 120, 0.16);
+  justify-self: end;
+}
+
+.messageMeta {
+  color: var(--brand-strong);
+  display: flex;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  justify-content: space-between;
+}
+
+.actionPanel {
+  display: grid;
+  gap: 14px;
+}
+
+.actionRow {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.emptyState,
+.emptyStage {
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px dashed rgba(15, 92, 120, 0.18);
+  border-radius: 24px;
+  padding: 20px;
+}
+
+.emptyStage {
+  align-content: center;
+  display: grid;
+  gap: 10px;
+  min-height: 360px;
+  text-align: center;
+}
+
+@media (max-width: 1180px) {
+  .loginShell,
+  .workspaceShell,
+  .headerBar,
+  .dashboardGrid,
+  .metricsStrip,
+  .summaryGrid,
+  .demoAccounts,
+  .opsPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    min-height: auto;
+    position: static;
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 0;
+  }
+
+  .toastViewport {
+    right: 16px;
+    top: 16px;
+  }
+
+  .promoGrid,
+  .formRow,
+  .actionRow,
+  .headerUtilityBar {
+    grid-template-columns: 1fr;
+  }
+
+  .topbarActions {
+    grid-auto-flow: row;
+  }
+
+  .primaryButton,
+  .secondaryButton,
+  .ghostButton,
+  .statusButton {
+    width: 100%;
+  }
+
+  .statusRow {
+    flex-direction: column;
+  }
+}

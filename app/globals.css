@@ -1,0 +1,29 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(16, 59, 92, 0.16), transparent 30%),
+    linear-gradient(180deg, #eff5f8 0%, #e7eef3 100%);
+  color: #15212b;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
