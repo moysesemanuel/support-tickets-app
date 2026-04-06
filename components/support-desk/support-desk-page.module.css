@@ -380,27 +380,31 @@
 }
 
 .profileButton {
-  align-items: start;
+  align-items: center;
   background: rgba(255, 255, 255, 0.84);
   border: 1px solid var(--line);
   border-radius: 18px;
   cursor: pointer;
-  display: grid;
+  display: inline-flex;
   font: inherit;
-  gap: 4px;
-  min-height: 50px;
-  padding: 10px 14px;
-  text-align: left;
+  height: 50px;
+  justify-content: center;
+  padding: 0 12px;
+  width: 50px;
 }
 
-.profileGreeting {
-  color: var(--ink);
-  font-weight: 700;
-}
-
-.profileRole {
-  color: var(--muted);
-  font-size: 0.84rem;
+.profileAvatar {
+  align-items: center;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+  border-radius: 12px;
+  color: #f7fbfd;
+  display: inline-flex;
+  font-size: 0.86rem;
+  font-weight: 800;
+  height: 28px;
+  justify-content: center;
+  letter-spacing: 0.06em;
+  width: 28px;
 }
 
 .profileMenu {
@@ -560,6 +564,11 @@
   grid-template-columns: 380px minmax(0, 1fr);
 }
 
+.dashboardGridTickets {
+  display: grid;
+  gap: 20px;
+}
+
 .queueRail,
 .contentStage,
 .rightStage {
@@ -622,6 +631,104 @@
   box-shadow: 0 14px 30px rgba(10, 50, 65, 0.1);
 }
 
+.kanbanBoard {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(5, minmax(260px, 1fr));
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.kanbanColumn {
+  background: rgba(247, 250, 252, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+}
+
+.kanbanColumnHeader {
+  align-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  min-height: 48px;;
+  max-height: 48px;
+  padding: 0 14px;
+}
+
+.kanbanColumnHeader strong,
+.kanbanColumnHeader span {
+  color: inherit;
+}
+
+.kanbanTodo {
+  background: linear-gradient(135deg, #b84141 0%, #8f2525 100%);
+}
+
+.kanbanDoing {
+  background: linear-gradient(135deg, #1d7f52 0%, #126740 100%);
+}
+
+.kanbanPaused {
+  background: linear-gradient(135deg, #c58a1f 0%, #9a690f 100%);
+}
+
+.kanbanDone {
+  background: linear-gradient(135deg, #737e89 0%, #56616b 100%);
+}
+
+.kanbanColumnBody {
+  display: grid;
+  gap: 12px;
+}
+
+.kanbanCard,
+.kanbanCardActive {
+  align-content: start;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  cursor: pointer;
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  text-align: left;
+}
+
+.kanbanCardActive {
+  border-color: rgba(15, 92, 120, 0.34);
+  box-shadow: 0 14px 30px rgba(10, 50, 65, 0.1);
+}
+
+.kanbanCardTopline {
+  color: var(--muted);
+  display: flex;
+  font-size: 0.78rem;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.kanbanMeta {
+  color: var(--muted);
+  display: grid;
+  gap: 2px;
+}
+
+.kanbanCard strong {
+  line-height: 1.15;
+}
+
+.kanbanEmpty {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(15, 92, 120, 0.18);
+  border-radius: 18px;
+  color: var(--muted);
+  padding: 16px;
+}
+
 .ticketHeader {
   align-items: start;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -682,25 +789,39 @@
   color: var(--brand);
 }
 
+.priorityBadge {
+  box-sizing: border-box;
+  height: 30px;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  width: 72px;
+}
+
 .badgeWaiting {
   background: rgba(161, 100, 17, 0.14);
   color: var(--warning);
 }
 
-.badgeResolved,
-.badgeLow {
+.badgeResolved {
   background: rgba(92, 106, 119, 0.14);
   color: #42505d;
 }
 
+.badgeLow {
+  background: rgba(29, 127, 82, 0.12);
+  color: var(--success);
+}
+
 .badgeMedium {
-  background: rgba(15, 92, 120, 0.12);
-  color: var(--brand);
+  background: rgba(197, 138, 31, 0.18);
+  color: var(--warning);
 }
 
 .badgeHigh {
-  background: rgba(217, 122, 51, 0.14);
-  color: var(--accent);
+  background: rgba(184, 65, 65, 0.12);
+  color: var(--danger);
 }
 
 .badgeUrgent {
@@ -784,15 +905,296 @@
   text-align: center;
 }
 
+.ticketModalOverlay {
+  align-items: center;
+  background: rgba(8, 18, 24, 0.48);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 28px;
+  position: fixed;
+  z-index: 90;
+}
+
+.ticketModal {
+  background: #ffffff;
+  border: 1px solid rgba(26, 36, 48, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 28px 64px rgba(10, 50, 65, 0.22);
+  display: grid;
+  max-height: calc(100vh - 56px);
+  max-width: 1440px;
+  overflow: hidden;
+  width: min(1440px, calc(100vw - 56px));
+}
+
+.ticketModalHeader,
+.ticketModalBody,
+.ticketModalActions,
+.ticketModalFilters,
+.ticketChatIntro,
+.ticketChatComposerHeader,
+.ticketChatComposerActions,
+.ticketChatMeta,
+.ticketChatStats {
+  display: grid;
+  gap: 14px;
+}
+
+.ticketModalHeader {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 26px 30px 22px;
+}
+
+.ticketModalTitle {
+  align-items: start;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.ticketFlag {
+  align-items: center;
+  background: linear-gradient(135deg, #ff784a 0%, #ff5d3d 100%);
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(255, 93, 61, 0.28);
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 1.35rem;
+  height: 52px;
+  justify-content: center;
+  width: 52px;
+}
+
+.ticketModalTitle strong {
+  color: #ff5d3d;
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.ticketModalTitle h2 {
+  color: var(--ink);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  line-height: 1.04;
+  margin: 0;
+}
+
+.ticketModalTitle p {
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.ticketModalActions {
+  align-items: center;
+  grid-auto-flow: column;
+}
+
+.playButton,
+.scheduleButton,
+.closeButton {
+  align-items: center;
+  border: 0;
+  border-radius: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 18px;
+}
+
+.playButton {
+  background: linear-gradient(135deg, #2acc7e 0%, #17b868 100%);
+  color: #ffffff;
+}
+
+.scheduleButton {
+  background: linear-gradient(135deg, #6875f5 0%, #5460db 100%);
+  color: #ffffff;
+}
+
+.closeButton {
+  background: rgba(248, 250, 252, 1);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.ticketModalBody {
+  align-content: start;
+  max-height: calc(100vh - 170px);
+  overflow: auto;
+  padding: 24px 30px 30px;
+}
+
+.ticketModalFilters {
+  align-items: end;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ticketField {
+  display: grid;
+  gap: 8px;
+}
+
+.ticketField span {
+  color: var(--ink);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.ticketChat {
+  border: 1px solid rgba(255, 93, 61, 0.4);
+  border-radius: 24px;
+  display: grid;
+  gap: 18px;
+  min-height: 380px;
+  padding: 22px;
+  position: relative;
+}
+
+.ticketChat::before {
+  background: linear-gradient(180deg, #ff784a 0%, #ff5d3d 100%);
+  border-radius: 999px;
+  content: "";
+  position: absolute;
+}
+
+.ticketChat::before {
+  height: calc(100% - 78px);
+  left: 34px;
+  top: 50px;
+  width: 2px;
+}
+
+.ticketChatIntro {
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.ticketChatStats {
+  color: var(--muted);
+  grid-auto-flow: column;
+}
+
+.ticketChatList {
+  display: grid;
+  gap: 18px;
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.ticketChatItem {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 64px minmax(0, 1fr);
+  position: relative;
+}
+
+.ticketChatAvatar {
+  align-items: center;
+  background: linear-gradient(180deg, #d9dde1 0%, #bec5ca 100%);
+  border: 1px solid rgba(26, 36, 48, 0.12);
+  border-radius: 999px;
+  color: #4a545d;
+  display: inline-flex;
+  font-size: 1.35rem;
+  font-weight: 800;
+  height: 48px;
+  justify-content: center;
+  position: relative;
+  width: 48px;
+  z-index: 1;
+}
+
+.ticketChatCard {
+  background: #ffffff;
+  border-radius: 18px;
+  display: grid;
+  gap: 10px;
+  min-height: 124px;
+  padding: 18px 20px;
+}
+
+.ticketChatMeta {
+  align-items: center;
+  grid-template-columns: auto auto;
+  justify-content: start;
+}
+
+.ticketChatMeta strong {
+  color: var(--ink);
+}
+
+.ticketChatMeta span {
+  color: var(--muted);
+}
+
+.ticketChatCard p {
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.moduleGrid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.moduleInlineMeta {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.moduleList {
+  color: var(--ink);
+  display: grid;
+  gap: 8px;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.ticketChatComposer {
+  background: rgba(247, 250, 252, 0.94);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+}
+
+.ticketChatComposerHeader p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.ticketChatComposerActions {
+  grid-auto-flow: column;
+  justify-content: end;
+}
+
 @media (max-width: 1180px) {
   .loginShell,
   .workspaceShell,
   .headerBar,
   .dashboardGrid,
+  .dashboardGridTickets,
+  .moduleGrid,
   .metricsStrip,
   .summaryGrid,
   .demoAccounts,
-  .opsPanel {
+  .opsPanel,
+  .ticketModalFilters {
     grid-template-columns: 1fr;
   }
 
@@ -815,10 +1217,30 @@
   .promoGrid,
   .formRow,
   .actionRow,
-  .headerUtilityBar {
+  .headerUtilityBar,
+  .ticketModalHeader,
+  .ticketModalTitle,
+  .ticketChatIntro,
+  .ticketChatItem,
+  .ticketChatComposerActions {
     grid-template-columns: 1fr;
   }
 
+  .ticketModalOverlay {
+    padding: 16px;
+  }
+
+  .ticketModal {
+    max-height: calc(100vh - 32px);
+    width: calc(100vw - 32px);
+  }
+
+  .ticketModalHeader,
+  .ticketModalBody {
+    padding-inline: 18px;
+  }
+
+  .ticketModalActions,
   .topbarActions {
     grid-auto-flow: row;
   }
@@ -826,11 +1248,18 @@
   .primaryButton,
   .secondaryButton,
   .ghostButton,
-  .statusButton {
+  .statusButton,
+  .playButton,
+  .scheduleButton,
+  .closeButton {
     width: 100%;
   }
 
   .statusRow {
     flex-direction: column;
+  }
+
+  .ticketChat::before {
+    left: 23px;
   }
 }

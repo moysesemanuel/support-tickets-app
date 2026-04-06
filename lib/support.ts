@@ -1,6 +1,11 @@
 import { prisma } from "@/lib/prisma";
 
-export type TicketStatus = "OPEN" | "IN_PROGRESS" | "WAITING_CUSTOMER" | "RESOLVED";
+export type TicketStatus =
+  | "OPEN"
+  | "IN_PROGRESS"
+  | "WAITING_CUSTOMER"
+  | "WAITING_THIRD_PARTY"
+  | "RESOLVED";
 export type TicketPriority = "LOW" | "MEDIUM" | "HIGH" | "URGENT";
 export type MessageAuthorRole = "CLIENT" | "TECHNICIAN";
 
@@ -26,6 +31,7 @@ const STATUS_LABELS: Record<TicketStatus, string> = {
   OPEN: "Aberto",
   IN_PROGRESS: "Em atendimento",
   WAITING_CUSTOMER: "Aguardando cliente",
+  WAITING_THIRD_PARTY: "Aguardando terceiros",
   RESOLVED: "Resolvido",
 };
 
