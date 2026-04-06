@@ -1,0 +1,106 @@
+.sidebar {
+  background: linear-gradient(180deg, #12202a 0%, #182f3d 100%);
+  border: 0;
+  border-radius: 0;
+  color: #eef5f8;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  min-height: 100vh;
+  padding: 24px;
+  position: sticky;
+  top: 0;
+}
+
+.sidebarBrand,
+.sidebarMenu,
+.sidebarSearchWrap {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebarEyebrow {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sidebarBrand strong {
+  font-size: 1.3rem;
+}
+
+.sidebarBrand p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.sidebarMenu {
+  margin-top: 16px;
+}
+
+.sidebarSearchWrap {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  grid-template-columns: 18px minmax(0, 1fr);
+  padding: 0 12px;
+}
+
+.sidebarSearchIcon {
+  color: #6d7a87;
+  font-size: 0.92rem;
+}
+
+.sidebarSearchInput {
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  font: inherit;
+  min-height: 42px;
+  outline: none;
+  width: 100%;
+}
+
+.sidebarSearchInput::placeholder {
+  color: #8793a0;
+}
+
+.sidebarMenuButton,
+.sidebarMenuButtonActive {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: rgba(238, 245, 248, 0.78);
+  cursor: pointer;
+  font: inherit;
+  min-height: 42px;
+  padding: 0 12px;
+  text-align: left;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.sidebarMenuButton:hover,
+.sidebarMenuButtonActive:hover {
+  transform: translateX(2px);
+}
+
+.sidebarMenuButtonActive {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+@media (max-width: 1180px) {
+  .sidebar {
+    min-height: auto;
+    position: static;
+  }
+}

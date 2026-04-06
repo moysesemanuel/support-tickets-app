@@ -1,0 +1,133 @@
+.loginShell {
+  align-items: stretch;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 440px);
+}
+
+.loginPromo,
+.loginCard {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+}
+
+.loginPromo,
+.loginCard {
+  padding: 28px;
+}
+
+.loginPromo {
+  background:
+    linear-gradient(135deg, rgba(10, 50, 65, 0.9) 0%, rgba(15, 92, 120, 0.88) 58%, rgba(217, 122, 51, 0.76) 100%);
+  color: #f8fbfd;
+  display: grid;
+  gap: 18px;
+  min-height: 520px;
+}
+
+.loginPromoEyebrow {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.loginPromo h1,
+.loginCard h2 {
+  margin: 0;
+}
+
+.loginPromo h1 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+  max-width: 10ch;
+}
+
+.loginPromo p,
+.loginCard p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+.loginPromo p {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 56ch;
+}
+
+.loginCard {
+  align-content: start;
+  display: grid;
+  gap: 18px;
+}
+
+.promoGrid,
+.demoAccounts {
+  display: grid;
+  gap: 14px;
+}
+
+.promoGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: auto;
+}
+
+.promoCard {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+}
+
+.promoCard strong {
+  font-size: 1.05rem;
+}
+
+.promoCard p {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.demoAccounts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.demoAccountCard {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(15, 92, 120, 0.22);
+  border-radius: 22px;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  padding: 18px;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.demoAccountCard strong {
+  color: var(--brand-strong);
+}
+
+.demoAccountCard:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 92, 120, 0.36);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1180px) {
+  .loginShell,
+  .demoAccounts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .promoGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,73 @@
+.page {
+  --ink: #1a2430;
+  --muted: #66717e;
+  --line: rgba(26, 36, 48, 0.1);
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: #ffffff;
+  --brand: #0f5c78;
+  --brand-strong: #0a3241;
+  --accent: #d97a33;
+  --success: #1d7f52;
+  --warning: #a16411;
+  --danger: #b84141;
+  background:
+    radial-gradient(circle at top left, rgba(15, 92, 120, 0.14), transparent 28%),
+    radial-gradient(circle at right, rgba(217, 122, 51, 0.12), transparent 24%),
+    linear-gradient(180deg, #edf3f6 0%, #dfe8ed 100%);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.shell {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  max-width: none;
+  min-height: 100vh;
+  position: relative;
+}
+
+.workspaceShell {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 280px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.mainStage {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+}
+
+.dashboardGrid {
+  align-items: start;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 380px minmax(0, 1fr);
+}
+
+.dashboardGridTickets {
+  display: grid;
+  gap: 20px;
+}
+
+.contentStage {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
+@media (max-width: 1180px) {
+  .workspaceShell,
+  .dashboardGrid,
+  .dashboardGridTickets {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 0;
+  }
+}
